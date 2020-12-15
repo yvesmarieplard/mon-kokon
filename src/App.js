@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Footer from './components/Footer';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Formulaire from './components/Formulaire.js';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Switch>
           <Route path='/' exact component={Home} />
           </Switch>
+          <Formulaire />
           <Footer />
         </Router>
       </div>

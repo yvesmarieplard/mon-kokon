@@ -11,7 +11,6 @@ function Home () {
       <HeroSection />
       <Map/>
       <Cards />
-      <Formulaire />
     </>
   )
 }
