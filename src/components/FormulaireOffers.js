@@ -1,21 +1,21 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import AddTutorial from "./add-tutorial.component";
-import Tutorial from "./tutorial.component";
-import TutorialsList from "./tutorials-list.component";
+import AddOffer from "./add-offers.component";
+import Offer from "./offers.component";
+import OffersList from "./offers-list.component";
 
-function Formulaire() {
+function FormulaireOffers() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/tutorials" className="navbar-brand">
+        <a href="/offers" className="navbar-brand">
           Boumar
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/tutorials"} className="nav-link">
-              Tutorials
+            <Link to={"/offers"} className="nav-link">
+              Offers
             </Link>
           </li>
           <li className="nav-item">
@@ -28,13 +28,13 @@ function Formulaire() {
 
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
-          <Route exact path="/add" component={AddTutorial} />
-          <Route path="/tutorials/:id" component={Tutorial} />
+          <Route exact path={["/", "/offers"]} component={OffersList} />
+          <Route exact path="/add" component={AddOffer} />
+          <Route path="/offers/:id" component={Offer} />
         </Switch>
       </div>
     </div>
   );
 }
 
-export default Formulaire;
+export default FormulaireOffers;

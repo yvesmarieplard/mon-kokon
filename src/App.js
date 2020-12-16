@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Footer from './components/Footer';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Formulaire from './components/Formulaire.js';
+import FormulaireOffers from './components/FormulaireOffers.js';
 
 class App extends Component {
   render() {
@@ -14,10 +14,10 @@ class App extends Component {
       <div className="App">
         <Router>
           <Navbar />
+          <FormulaireOffers />
           <Switch>
           <Route path='/' exact component={Home} />
           </Switch>
-          <Formulaire />
           <Footer />
         </Router>
       </div>

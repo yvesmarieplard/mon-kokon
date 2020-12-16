@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import TutorialDataService from "../services/tutorial.service";
+import OffersDataService from "../services/offers.service";
 
-export default class Tutorial extends Component {
+export default class Offer extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeSuburb = this.onChangeSuburb.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.getTutorial = this.getTutorial.bind(this);
+    this.getOffer = this.getOffer.bind(this);
     this.updatePublished = this.updatePublished.bind(this);
-    this.updateTutorial = this.updateTutorial.bind(this);
-    this.deleteTutorial = this.deleteTutorial.bind(this);
+    this.updateOffer = this.updateOffer.bind(this);
+    this.deleteOffer = this.deleteOffer.bind(this);
 
     this.state = {
-      currentTutorial: {
+      currentOffer: {
         id: null,
-        title: "",
+        suburb: "",
         description: "",
         published: false
       },
@@ -23,17 +23,17 @@ export default class Tutorial extends Component {
   }
 
   componentDidMount() {
-    this.getTutorial(this.props.match.params.id);
+    this.getOffer(this.props.match.params.id);
   }
 
-  onChangeTitle(e) {
-    const title = e.target.value;
+  onChangeSuburb(e) {
+    const suburb = e.target.value;
 
     this.setState(function(prevState) {
       return {
-        currentTutorial: {
-          ...prevState.currentTutorial,
-          title: title
+        currentOffer: {
+          ...prevState.currentOffer,
+          suburb: suburb
         }
       };
     });
@@ -43,18 +43,18 @@ export default class Tutorial extends Component {
     const description = e.target.value;
 
     this.setState(prevState => ({
-      currentTutorial: {
-        ...prevState.currentTutorial,
+      currentOffer: {
+        ...prevState.currentOffer,
         description: description
       }
     }));
   }
 
-  getTutorial(id) {
-    TutorialDataService.get(id)
+  getOffer(id) {
+    OffersDataService.get(id)
       .then(response => {
         this.setState({
-          currentTutorial: response.data
+          currentOffer: response.data
         });
         console.log(response.data);
       })
@@ -65,17 +65,17 @@ export default class Tutorial extends Component {
 
   updatePublished(status) {
     var data = {
-      id: this.state.currentTutorial.id,
-      title: this.state.currentTutorial.title,
-      description: this.state.currentTutorial.description,
+      id: this.state.currentOffer.id,
+      suburb: this.state.currentOffer.suburb,
+      description: this.state.currentOffer.description,
       published: status
     };
 
-    TutorialDataService.update(this.state.currentTutorial.id, data)
+    OffersDataService.update(this.state.currentOffer.id, data)
       .then(response => {
         this.setState(prevState => ({
-          currentTutorial: {
-            ...prevState.currentTutorial,
+          currentOffer: {
+            ...prevState.currentOffer,
             published: status
           }
         }));
@@ -86,15 +86,15 @@ export default class Tutorial extends Component {
       });
   }
 
-  updateTutorial() {
-    TutorialDataService.update(
-      this.state.currentTutorial.id,
-      this.state.currentTutorial
+  updateOffer() {
+    OffersDataService.update(
+      this.state.currentOffer.id,
+      this.state.currentOffer
     )
       .then(response => {
         console.log(response.data);
         this.setState({
-          message: "The tutorial was updated successfully!"
+          message: "The offer was updated successfully!"
         });
       })
       .catch(e => {
@@ -102,8 +102,8 @@ export default class Tutorial extends Component {
       });
   }
 
-  deleteTutorial() {
-    TutorialDataService.delete(this.state.currentTutorial.id)
+  deleteOffer() {
+    OffersDataService.delete(this.state.currentOffer.id)
       .then(response => {
         console.log(response.data);
         this.props.history.push('/tutorials')
@@ -114,22 +114,22 @@ export default class Tutorial extends Component {
   }
 
   render() {
-    const { currentTutorial } = this.state;
+    const { currentOffer } = this.state;
 
     return (
       <div>
-        {currentTutorial ? (
+        {currentOffer ? (
           <div className="edit-form">
-            <h4>Tutorial</h4>
+            <h4>Offer</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="suburb">suburb</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="title"
-                  value={currentTutorial.title}
-                  onChange={this.onChangeTitle}
+                  id="suburb"
+                  value={currentOffer.suburb}
+                  onChange={this.onChangeSuburb}
                 />
               </div>
               <div className="form-group">
@@ -138,7 +138,7 @@ export default class Tutorial extends Component {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={currentTutorial.description}
+                  value={currentOffer.description}
                   onChange={this.onChangeDescription}
                 />
               </div>
@@ -147,11 +147,11 @@ export default class Tutorial extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentTutorial.published ? "Published" : "Pending"}
+                {currentOffer.published ? "Published" : "Pending"}
               </div>
             </form>
 
-            {currentTutorial.published ? (
+            {currentOffer.published ? (
               <button
                 className="badge badge-primary mr-2"
                 onClick={() => this.updatePublished(false)}
@@ -169,7 +169,7 @@ export default class Tutorial extends Component {
 
             <button
               className="badge badge-danger mr-2"
-              onClick={this.deleteTutorial}
+              onClick={this.deleteOffer}
             >
               Delete
             </button>
@@ -177,7 +177,7 @@ export default class Tutorial extends Component {
             <button
               type="submit"
               className="badge badge-success"
-              onClick={this.updateTutorial}
+              onClick={this.updateOffer}
             >
               Update
             </button>
@@ -186,7 +186,7 @@ export default class Tutorial extends Component {
         ) : (
           <div>
             <br />
-            <p>Please click on a Tutorial...</p>
+            <p>Please click on an Offer...</p>
           </div>
         )}
       </div>
