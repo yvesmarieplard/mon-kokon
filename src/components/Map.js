@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import OffersDataService from "../services/offers.service";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import './Map.css';
+require('dotenv').config();
 
 
 const containerStyle = {
@@ -17,7 +18,7 @@ class Map extends Component {
   render() {
     return (
       <LoadScript
-        googleMapsApiKey="AIzaSyBST27U0e-ZBKSCS097uXoNHBBeDNYXsx0"
+        googleMapsApiKey={process.env.GOOGLE_API_TOKEN}
       >
         <GoogleMap
           mapContainerStyle={containerStyle}

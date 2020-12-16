@@ -2,6 +2,33 @@ import React, { Component } from "react";
 import OffersDataService from "../services/offers.service";
 import { Link } from "react-router-dom";
 
+const Properties = props => (
+    <tr>
+        <td>{props.offers.id}</td>
+        <td>{props.offers.suburb}</td>
+        <td>{props.offers.description}</td>
+        <td>{props.offers.rooms}</td>
+        <td>{props.offers.type}</td>
+        <td>{props.offers.price}</td>
+        <td>{props.offers.metdod}</td>
+        <td>{props.offers.sellerG}</td>
+        <td>{props.offers.date}</td>
+        <td>{props.offers.distance}</td>
+        <td>{props.offers.postcode}</td>
+        <td>{props.offers.bedroom}</td>
+        <td>{props.offers.batdroom}</td>
+        <td>{props.offers.car}</td>
+        <td>{props.offers.landsize}</td>
+        <td>{props.offers.buildingArea}</td>
+        <td>{props.offers.yearBuilt}</td>
+        <td>{props.offers.councilArea}</td>
+        <td>{props.offers.lattitude}</td>
+        <td>{props.offers.longtitude}</td>
+        <td>{props.offers.regionname}</td>
+        <td>{props.offers.propertycount}</td>
+    </tr>
+)
+
 export default class OffersList extends Component {
   constructor(props) {
     super(props);
@@ -87,6 +114,12 @@ export default class OffersList extends Component {
       .catch(e => {
         console.log(e);
       });
+  }
+
+  PropertiesList() {
+      return this.state.offers.map(function(a, i){
+          return <Properties offers={a} key={i} />;
+      })
   }
 
   render() {
@@ -208,7 +241,7 @@ export default class OffersList extends Component {
                   </tr>
               </thead>
               <tbody>
-
+                        { this.PropertiesList() }
               </tbody>
           </table>
         </div>

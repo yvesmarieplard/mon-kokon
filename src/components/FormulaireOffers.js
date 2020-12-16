@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AddOffer from "./add-offers.component";
 import Offer from "./offers.component";
 import OffersList from "./offers-list.component";
+import PropertiesList from "./properties-list.component";
 
 function FormulaireOffers() {
   return (
@@ -28,7 +29,7 @@ function FormulaireOffers() {
 
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/offers"]} component={OffersList} />
+          <Route exact path={["/", "/offers"]} component={PropertiesList} />
           <Route exact path="/add" component={AddOffer} />
           <Route path="/offers/:id" component={Offer} />
         </Switch>
