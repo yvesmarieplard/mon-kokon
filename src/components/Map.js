@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import OffersDataService from "../services/offers.service";
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 require('dotenv').config();
-
 
 const containerStyle = {
   width: '1000px',
@@ -13,6 +12,7 @@ const center = {
   lat: 48.8526757,
   lng: 2.2631792
 };
+
 
 class Map extends Component {
   render() {
@@ -26,7 +26,9 @@ class Map extends Component {
           zoom={10}
         >
           { /* Child components, such as markers, info windows, etc. */ }
-          <></>
+          <>
+          <Marker lat="48.8526757" lng="2.2631792" />
+          </>
         </GoogleMap>
       </LoadScript>
     )

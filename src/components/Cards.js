@@ -11,8 +11,8 @@ function Cards() {
           <ul className='cards__items'>
             <CardItem
               src='images/img-appartment.jpg'
-              text='Pictures'
-              label='Pictures'
+              text='Paris'
+              label='Paris'
               path='/services'
             />
             <CardItem
@@ -21,6 +21,7 @@ function Cards() {
               label='Key Primary Indicators'
               path='/services'
             />
+
           </ul>
           <ul className='cards__items'>
             <CardItem
