@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import OffersDataService from "../services/offers.service";
 import { Link } from "react-router-dom";
 
+
 const Properties = props => (
     <tr>
         <td>
