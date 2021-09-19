@@ -1,5 +1,4 @@
 # Real Estate Project
-
 The Real Estate Project is a web platform for people looking to invest in Paris, France.
 Dashboards are build with React, Redux & Bootstrap. It allow users to navigate through Paris real estate offers, analyse them and compare them with historical data.
 
